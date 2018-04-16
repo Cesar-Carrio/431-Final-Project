@@ -1,5 +1,4 @@
 <?php
-  //written by Todd Enders, 2017
   session_start();
 ?>
 <!DOCTYPE html>
