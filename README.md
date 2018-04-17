@@ -2,6 +2,7 @@
 Final project for 431
 
 Database design:
+
 ![DB design diagram](https://i.imgur.com/EOgo5FD.jpg)
 
 Entity diagram:
