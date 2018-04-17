@@ -1,7 +1,7 @@
 # 431-Final-Project
 Final project for 431
 
-Database design:
+**Database design:**
 
 ![DB design diagram](https://i.imgur.com/EOgo5FD.jpg)
 
