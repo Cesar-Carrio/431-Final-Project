@@ -1,14 +1,19 @@
+-- Drop and create the database
 drop database if exists ProjectBasketball431;
 create database if not exists ProjectBasketball431;
 
 use ProjectBasketball431;
 
+-- Accounts table
+-- 	Role is an enum of 3 possible roles
 create table Accounts(
 Username varchar(100) not null primary key,
 Email varchar(100),
-PassHash varchar(100)
+PassHash varchar(100),
+Role enum('observer', 'user', 'manager')
 );
 
+-- Team information table
 create table Teams(
 ID int(10) unsigned auto_increment primary key,
 Team_Name varchar(100),
@@ -17,6 +22,7 @@ Wins tinyint(2),
 Losses tinyint(2)
 );
 
+-- Game information table
 create table Games(
 ID int(10) unsigned auto_increment primary key,
 Game_Date date,
@@ -27,6 +33,8 @@ foreign key (Winner) references Teams(ID),
 foreign key (Loser) references Teams(ID)
 );
 
+-- Players (and coaches) information table
+--	PersonType is an enum that specifies players and coaches
 create table Players(
 ID int(10) unsigned auto_increment primary key,
 TeamID int(10) unsigned not null,
@@ -37,10 +45,11 @@ City varchar(100),
 State varchar(100),
 Country varchar(100),
 ZipCode char(10) check (ZipCode REGEXP '^(?!0{5})(?!9{5})\\d{5}(-(?!0{4})(?!9{4})\\d{4})?$'),
-PersonType varchar(100),
+PersonType enum('Player', 'Coach'),
 foreign key (TeamID) references Teams(ID)
 );
 
+-- Statistics table for a player's statistics in a particular game
 create table Statistics(
 ID int(10) unsigned auto_increment primary key,
 PlayerID int(10) unsigned not null,
@@ -53,4 +62,57 @@ Rebounds tinyint(3) unsigned default 0,
 foreign key (PlayerID) references Players(ID) on delete cascade,
 foreign key (GameID) references Games(ID) on delete cascade
 );
+
+-- SENSITIVE INFORMATION:
+-- 	Tables: Accounts, Players
+
+-- NON-SENSITIVE INFORMATION:
+-- 	Tables: Games, Teams, Statistics
+
+-- Observer role
+--	Permissions to SELECT 
+-- 	on Players, Statistics
+drop user if exists '431obs';
+grant select 
+on ProjectBasketball431.Players
+to '431obs'
+identified by 'pawn012';
+grant select 
+on ProjectBasketball431.Statistics
+to '431obs'
+identified by 'pawn012';
+
+-- User role
+--	Permissions to INSERT, SELECT, UPDATE, DELETE
+-- 	on Players, Statistics, Games, Teams
+drop user if exists '431user';
+grant insert, select, update, delete
+on ProjectBasketball431.Players
+to '431user'
+identified by 'knight890';
+grant insert, select, update, delete
+on ProjectBasketball431.Statistics
+to '431user'
+identified by 'knight890';
+grant insert, select, update, delete
+on ProjectBasketball431.Games
+to '431user'
+identified by 'knight890';
+grant insert, select, update, delete
+on ProjectBasketball431.Teams
+to '431user'
+identified by 'knight890';
+
+-- Executive manager ('Manager' for short in enum) role
+-- 	Permissions to INSERT, SELECT, UPDATE, DELETE
+-- 	on all tables
+drop user if exists '431exec';
+grant insert, select, update, delete
+on ProjectBasketball431.*
+to '431exec'
+identified by 'rook456';
+
+
+
+
 
