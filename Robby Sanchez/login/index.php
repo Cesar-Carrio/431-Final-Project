@@ -18,12 +18,16 @@
       }   ?>
       <form action="process.php" method="post">
         <input type="hidden" name="action" value="register">
+        
         <label for="first_name">First Name:</label>
         <input id="first_name" type="text" name="first_name">
+
         <label for="last_name">Last Name:</label>
         <input id="last_name" type="text" name="last_name">
+
         <label for="email">Email:</label>
         <input id="email" type="text" name="email">
+
         <label for="password">Password:</label>
         <input id="password" type="password" name="password">
         <label for="c_password">Confirm Password:</label>
