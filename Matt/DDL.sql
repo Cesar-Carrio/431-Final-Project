@@ -84,11 +84,7 @@ identified by 'pawn012';
 
 -- User role
 --	Permissions to INSERT, SELECT, UPDATE, DELETE
--- 	on Players, Statistics, Games, Teams
-drop user if exists '431user';
-grant insert, select, update, delete
-on ProjectBasketball431.Players
-to '431user'
+-- 	on Statistics, Games, Teams
 identified by 'knight890';
 grant insert, select, update, delete
 on ProjectBasketball431.Statistics
