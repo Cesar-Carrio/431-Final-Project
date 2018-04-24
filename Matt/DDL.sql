@@ -109,6 +109,17 @@ to '431exec'
 identified by 'rook456';
 
 
+-- Insert data
+-- 	Teams data
+insert into Teams (Team_Name, Team_City, Wins, Losses) values
+('Falcons', 'Fullerton', 2, 1),
+('Crocodiles', 'Alabasta', 1, 2);
+
+-- 	Players data
+insert into Players (TeamID, Name_First, Name_Last, Street, City, State, Country, ZipCode, PersonType) values
+(1,	'Alex', 	'Ackerman', '482 Gold Lane', 	'Fullerton', 	'CA', 'USA', '92834', 'Player'),
+(1, 'Ben', 		'Banner', 	'268 Red Street', 	'Fullerton', 	'CA', 'USA', '92834', 'Player'),
+(2, 'Cameron', 	'Carson', 	'649 Blue Circle', 	'Alabasta', 	'CA', 'USA', '95871', 'Player');
 
 
 
