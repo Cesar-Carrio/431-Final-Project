@@ -4,13 +4,28 @@ create database if not exists ProjectBasketball431;
 
 use ProjectBasketball431;
 
+
+-- Roles table
+-- 	Each column after Role has nonzero as true, zero
+-- 	as false to represent access to tables
+create table Roles(
+Role enum('observer', 'user', 'manager') primary key,
+Accounts_access tinyint(1),
+Teams_access tinyint(1),
+Games_access tinyint(1),
+Players_access tinyint(1),
+Statistics_access tinyint(1),
+Roles_access tinyint(1)
+);
+
 -- Accounts table
 -- 	Role is an enum of 3 possible roles
 create table Accounts(
 Username varchar(100) not null primary key,
 Email varchar(100),
 PassHash varchar(100),
-Role enum('observer', 'user', 'manager')
+Acc_role enum('observer', 'user', 'manager'),
+foreign key (Acc_role) references Roles(Role)
 );
 
 -- Team information table
@@ -26,7 +41,6 @@ Losses tinyint(2)
 create table Games(
 ID int(10) unsigned auto_increment primary key,
 Game_Date date,
-Game_Length time,
 Winner int(10) unsigned,
 Loser int(10) unsigned,
 foreign key (Winner) references Teams(ID),
@@ -63,22 +77,27 @@ foreign key (PlayerID) references Players(ID) on delete cascade,
 foreign key (GameID) references Games(ID) on delete cascade
 );
 
+
 -- SENSITIVE INFORMATION:
--- 	Tables: Accounts, Players
+-- 	Tables: Accounts, Players, Roles
 
 -- NON-SENSITIVE INFORMATION:
 -- 	Tables: Games, Teams, Statistics
 
 -- Observer role
 --	Permissions to SELECT 
--- 	on Players, Statistics
+-- 	on Teams, Statistics, Games
 drop user if exists '431obs';
 grant select 
-on ProjectBasketball431.Players
+on ProjectBasketball431.Teams
 to '431obs'
 identified by 'pawn012';
 grant select 
 on ProjectBasketball431.Statistics
+to '431obs'
+identified by 'pawn012';
+grant select 
+on ProjectBasketball431.Games
 to '431obs'
 identified by 'pawn012';
 
@@ -110,6 +129,13 @@ identified by 'rook456';
 
 
 -- Insert data
+-- 	Roles data
+insert into Roles (	Role, Accounts_access, Teams_access, Games_access, 
+					Players_access, Statistics_access, Roles_access) values
+('observer',	0, 1, 1, 0, 1, 0),
+('user',		0, 1, 1, 0, 1, 0),
+('manager',		1, 1, 1, 1, 1, 1);
+
 -- 	Teams data
 insert into Teams (Team_Name, Team_City, Wins, Losses) values
 ('Falcons', 'Fullerton', 2, 1),
@@ -117,9 +143,21 @@ insert into Teams (Team_Name, Team_City, Wins, Losses) values
 
 -- 	Players data
 insert into Players (TeamID, Name_First, Name_Last, Street, City, State, Country, ZipCode, PersonType) values
-(1,	'Alex', 	'Ackerman', '482 Gold Lane', 	'Fullerton', 	'CA', 'USA', '92834', 'Player'),
-(1, 'Ben', 		'Banner', 	'268 Red Street', 	'Fullerton', 	'CA', 'USA', '92834', 'Player'),
-(2, 'Cameron', 	'Carson', 	'649 Blue Circle', 	'Alabasta', 	'CA', 'USA', '95871', 'Player');
+(1,	'Alex', 	'Ackerman', '482 Gold Lane', 		'Fullerton', 	'CA', 'USA', '92834', 'Player'),
+(1, 'Ben', 		'Banner', 	'268 Red Street', 		'Fullerton', 	'CA', 'USA', '92834', 'Player'),
+(2, 'Cameron', 	'Carson', 	'649 Blue Circle', 		'Alabasta', 	'CA', 'USA', '95871', 'Player'),
+(2,	'Nico',		'Robin', 	'184 Green Drive',		'Alabasta', 	'CA', 'USA', '95871', 'Player'),
+(1, 'James', 	'Jones', 	'942 Purple Avenue',	'Fullerton', 	'CA', 'USA', '92834', 'Coach'),
+(2, 'David', 	'Drekker', 	'649 Yellow Way',		'Alabasta',		'CA', 'USA', '95871', 'Coach');
 
+-- 	Games data
+insert into Games (Game_Date, Winner, Loser) values
+('2018-01-15', 1, 2),
+('2018-02-12', 2, 1);
+
+-- 	Statistics data
+insert into Statistics (PlayerID, GameID, PlayingTimeMin, PlayingTimeSec, Points, Assists, Rebounds) values
+(1,	1, 20, 33, 14, 4, 6),
+(2,	1, 14, 21, 12, 2, 4);
 
 
