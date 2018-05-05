@@ -62,7 +62,7 @@ State varchar(100),
 Country varchar(100),
 ZipCode char(10) check (ZipCode REGEXP '^(?!0{5})(?!9{5})\\d{5}(-(?!0{4})(?!9{4})\\d{4})?$'),
 PersonType enum('Player', 'Coach'),
-foreign key (TeamID) references Teams(ID)
+foreign key (TeamID) references Teams(ID) on delete cascade
 );
 
 -- Statistics table for a player's statistics in a particular game
