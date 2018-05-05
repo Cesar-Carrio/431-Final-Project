@@ -22,9 +22,11 @@ Roles_access tinyint(1)
 -- 	Role is an enum of 3 possible roles
 create table Accounts(
 Username varchar(100) not null primary key,
+Acc_role enum('observer', 'user', 'manager'),
 Email varchar(100),
 PassHash varchar(100),
-Acc_role enum('observer', 'user', 'manager'),
+Name_First varchar(100),
+Name_Last varchar(100),
 foreign key (Acc_role) references Roles(Role)
 );
 
@@ -139,16 +141,22 @@ insert into Roles (	Role, Accounts_access, Teams_access, Games_access,
 -- 	Teams data
 insert into Teams (Team_Name, Team_City, Wins, Losses) values
 ('Falcons', 'Fullerton', 2, 1),
-('Crocodiles', 'Alabasta', 1, 2);
+('Aligators', 'Anaheim', 1, 2);
 
 -- 	Players data
 insert into Players (TeamID, Name_First, Name_Last, Street, City, State, Country, ZipCode, PersonType) values
 (1,	'Alex', 	'Ackerman', '482 Gold Lane', 		'Fullerton', 	'CA', 'USA', '92834', 'Player'),
 (1, 'Ben', 		'Banner', 	'268 Red Street', 		'Fullerton', 	'CA', 'USA', '92834', 'Player'),
-(2, 'Cameron', 	'Carson', 	'649 Blue Circle', 		'Alabasta', 	'CA', 'USA', '95871', 'Player'),
-(2,	'Nico',		'Robin', 	'184 Green Drive',		'Alabasta', 	'CA', 'USA', '95871', 'Player'),
+(1, 'Cam', 		'Christy', 	'620 Magenta Way', 		'Fullerton', 	'CA', 'USA', '92834', 'Player'),
+(1, 'Daniel', 	'Dent', 	'268 White Circle', 	'Fullerton', 	'CA', 'USA', '92834', 'Player'),
+(1, 'Edgar', 	'Elton', 	'268 Marigold Park', 	'Fullerton', 	'CA', 'USA', '92834', 'Player'),
+(2, 'Cameron', 	'Carson', 	'649 Blue Circle', 		'Anaheim', 	'CA', 'USA', '92899', 'Player'),
+(2,	'Nico',		'Robin', 	'184 Green Drive',		'Anaheim', 	'CA', 'USA', '92899', 'Player'),
+(2,	'Tony',		'Chopper', 	'491 Brown Avenue',		'Anaheim', 	'CA', 'USA', '92899', 'Player'),
+(2,	'Sanji',	'Vinsmoke', '330 Pink Street',		'Anaheim', 	'CA', 'USA', '92899', 'Player'),
+(2,	'Silvers',	'Rayleigh', '148 Rainbow Road',		'Anaheim', 	'CA', 'USA', '92899', 'Player'),
 (1, 'James', 	'Jones', 	'942 Purple Avenue',	'Fullerton', 	'CA', 'USA', '92834', 'Coach'),
-(2, 'David', 	'Drekker', 	'649 Yellow Way',		'Alabasta',		'CA', 'USA', '95871', 'Coach');
+(2, 'David', 	'Drekker', 	'649 Yellow Way',		'Anaheim',		'CA', 'USA', '92899', 'Coach');
 
 -- 	Games data
 insert into Games (Game_Date, Winner, Loser) values
