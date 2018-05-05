@@ -4,7 +4,7 @@ Final project for 431
 **Database design:**
 
 ENTITY DIAGRAM VIEW:
-![ERD view](https://imgur.com/qNizJrH.jpg)
+![ERD view](https://i.imgur.com/eGgMkpb.jpg)
 
 Last updated 4/22
 
