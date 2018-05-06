@@ -1,5 +1,5 @@
 <?php require_once('../private/initialize.php'); ?>
-<?php include(SHARED_PATH . '/front_page_header.php'); ?>
+<?php include(SHARED_PATH . '/logged_in_header.php'); ?>
 
     <div>
         <?php include(WWW_ROOT.'forms/signup_form.php'); ?>

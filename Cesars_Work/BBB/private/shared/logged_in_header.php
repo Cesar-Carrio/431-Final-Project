@@ -1,9 +1,4 @@
 <?php
-session_start();
-$_SESSION['username'] = htmlspecialchars($_POST['username']);
-chk_signup_button(htmlspecialchars($_POST['submit']));
-$login_status = chk_creds(htmlspecialchars($_SESSION['username']));
-
 if (!isset($page_title)) {
     $page_title = 'Average Joes';
 }
@@ -18,4 +13,5 @@ if (!isset($page_title)) {
     <title><?php echo $page_title ?></title>
 </head>
 <body>
-<header>Average Joes League Stat Tracker</header>
+<header>
+    <h1>Average Joes League Stat Tracker </h1>

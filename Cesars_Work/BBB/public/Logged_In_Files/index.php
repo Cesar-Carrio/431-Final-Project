@@ -1,14 +1,10 @@
 <?php
 require_once('../../private/initialize.php');
-include(SHARED_PATH.'/dash_header.php');
+include(SHARED_PATH . '/header.php');
 ?>
 
-
-    <div id="content">
-        <?php
-
-        ?>
-    </div>
-
+<div>
+    <h1>Logged in</h1>
+</div>
 
 <?php include(SHARED_PATH.'/footer.php'); ?>

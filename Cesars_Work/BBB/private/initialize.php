@@ -15,6 +15,5 @@
   define("WWW_ROOT", '');
 
   require_once('func_files/functions.php');
-  require_once('func_files/login_funcs.php');
   require_once('func_files/db_functions.php');
 

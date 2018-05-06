@@ -1,10 +1,13 @@
 <?php require_once('../private/initialize.php'); ?>
 
-<?php $page_title = 'Welcome!'; ?>
-<?php include(SHARED_PATH . '/front_page_header.php'); ?>
+<?php $page_title = 'Welcome!'; ?><?php
+if (isset($_SESSION['Username'])){
+    header("Location: Logged_In_Files/index.php");
+}
+?>
+<?php include(SHARED_PATH . '/header.php'); ?>
 
 <div>
-    <?php include(WWW_ROOT . "forms/login_form.php"); ?>
     <div>
         <a href="<?php echo url_for('signup.php') ?>">Sign Up!</a>
     </div>

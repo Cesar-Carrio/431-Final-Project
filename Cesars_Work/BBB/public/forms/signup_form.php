@@ -1,4 +1,4 @@
-<form action="<?php echo url_for('Logged_In_Files/index.php');?>" method="post">
+<form action="../func_files/signup_funcs.php" method="post">
     <br>
     First Name: <br>
     <input type="text" name="Name_first" required>
@@ -18,3 +18,5 @@
     <button type="submit" value="submit" name="submit">Sign Up and Login!</button>
     <br><br>
 </form>
+
+
