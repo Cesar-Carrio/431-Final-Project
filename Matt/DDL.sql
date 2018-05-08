@@ -130,6 +130,19 @@ on ProjectBasketball431.*
 to '431exec'
 identified by 'rook456';
 
+-- Login role (role to lookup Accounts and Roles tables)
+-- 	Permissions to SELECT
+-- 	on Accounts, Roles
+drop user if exists '431login';
+grant select
+on ProjectBasketball431.Accounts
+to '431login'
+identified by 'bishop567';
+grant select
+on ProjectBasketball431.Roles
+to '431login'
+identified by 'bishop567';
+
 
 -- Insert data
 -- 	Roles data
@@ -137,7 +150,8 @@ insert into Roles (	Role, Accounts_access, Teams_access, Games_access,
 					People_access, Statistics_access, Roles_access, Account_name) values
 ('observer',	0, 1, 1, 0, 1, 0, '431obs'),
 ('user',		0, 1, 1, 0, 1, 0, '431user'),
-('manager',		1, 1, 1, 1, 1, 1, '431exec');
+('manager',		1, 1, 1, 1, 1, 1, '431exec'),
+('login', 		1, 0, 0, 0, 0, 1, '431login');
 
 -- 	Teams data
 insert into Teams (Team_Name, Team_City, Wins, Losses) values
