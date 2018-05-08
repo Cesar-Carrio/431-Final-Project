@@ -15,7 +15,8 @@ Teams_access tinyint(1),
 Games_access tinyint(1),
 People_access tinyint(1),
 Statistics_access tinyint(1),
-Roles_access tinyint(1)
+Roles_access tinyint(1),
+Account_name varchar(100)
 );
 
 -- Accounts table
@@ -133,10 +134,10 @@ identified by 'rook456';
 -- Insert data
 -- 	Roles data
 insert into Roles (	Role, Accounts_access, Teams_access, Games_access, 
-					People_access, Statistics_access, Roles_access) values
-('observer',	0, 1, 1, 0, 1, 0),
-('user',		0, 1, 1, 0, 1, 0),
-('manager',		1, 1, 1, 1, 1, 1);
+					People_access, Statistics_access, Roles_access, Account_name) values
+('observer',	0, 1, 1, 0, 1, 0, '431obs'),
+('user',		0, 1, 1, 0, 1, 0, '431user'),
+('manager',		1, 1, 1, 1, 1, 1, '431exec');
 
 -- 	Teams data
 insert into Teams (Team_Name, Team_City, Wins, Losses) values
