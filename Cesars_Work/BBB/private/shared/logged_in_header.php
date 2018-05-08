@@ -1,4 +1,7 @@
 <?php
+//need to add code for switching users from root to user role
+
+
 if (!isset($page_title)) {
     $page_title = 'Average Joes';
 }

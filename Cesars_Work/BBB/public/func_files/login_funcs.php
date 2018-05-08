@@ -5,6 +5,7 @@ if (isset($_POST['submit'])){
 
     include '../../private/db_credentials.php';
 
+
     $Username   = mysqli_real_escape_string($conn, htmlspecialchars($_POST['Username']));
     $pwd        = mysqli_real_escape_string($conn, htmlspecialchars($_POST['pwd']));
 
@@ -38,7 +39,7 @@ if (isset($_POST['submit'])){
                     //De-hashing
                     $hashedPwdCheck = password_verify($pwd, $row['PassHash']);
                     if ($hashedPwdCheck == false) {
-                        header("Location: ../index.php?login=error");
+                        header("Location: ../index.php?login=errorr");
                         exit();
                     } elseif($hashedPwdCheck == true) {
                         //log in the user here

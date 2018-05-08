@@ -7,11 +7,11 @@ if (isset($_SESSION['Username'])){
 ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
-<div>
     <div>
-        <a href="<?php echo url_for('signup.php') ?>">Sign Up!</a>
+        <div>
+            <a href="<?php echo url_for('signup.php') ?>">Sign Up!</a>
+        </div>
     </div>
-</div>
 
 
 <?php include(SHARED_PATH.'/footer.php'); ?>

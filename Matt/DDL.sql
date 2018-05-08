@@ -9,7 +9,7 @@ use ProjectBasketball431;
 -- 	Each column after Role has nonzero as true, zero
 -- 	as false to represent access to tables
 create table Roles(
-Role enum('observer', 'user', 'manager') primary key,
+Role enum('observer', 'user', 'manager','login') primary key,
 Accounts_access tinyint(1),
 Teams_access tinyint(1),
 Games_access tinyint(1),
@@ -23,7 +23,7 @@ Account_name varchar(100)
 -- 	Role is an enum of 3 possible roles
 create table Accounts(
 Username varchar(100) not null primary key,
-Acc_role enum('observer', 'user', 'manager'),
+Acc_role enum('observer', 'user', 'manager','login'),
 Email varchar(100),
 PassHash varchar(100),
 Name_First varchar(100),
