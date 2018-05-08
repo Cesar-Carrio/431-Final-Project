@@ -103,6 +103,10 @@ grant select
 on ProjectBasketball431.Games
 to '431obs'
 identified by 'pawn012';
+grant select
+on ProjectBasketball431.People
+to '431obs'
+identified by 'pawn012';
 
 -- User role
 --	Permissions to INSERT, SELECT, UPDATE, DELETE
