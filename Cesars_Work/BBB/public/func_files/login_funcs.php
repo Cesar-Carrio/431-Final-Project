@@ -67,6 +67,10 @@ if (isset($_POST['submit'])){
                         $_SESSION['last'] = $row['Name_Last'];
                         $_SESSION['email'] = $row['Email'];
                         $_SESSION['role'] = $row['Acc_role'];
+                        //need to implement the page the manager and user login pages
+                        //so if $_SESSION['role'] == manager || user give display a different
+                        //logged in page "admin page"
+                        //need to also make sure the database is logging in the correct roles such as 431obs, 431user, 431exec
                         header("Location: ../Logged_In_Files/index.php?login=success");
                         exit();
 

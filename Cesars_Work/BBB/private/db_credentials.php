@@ -5,3 +5,5 @@
     define("DB_NAME",'ProjectBasketball431');
 
     $conn = mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
+
+    //use username to send with queries
