@@ -13,7 +13,7 @@ Role enum('observer', 'user', 'manager') primary key,
 Accounts_access tinyint(1),
 Teams_access tinyint(1),
 Games_access tinyint(1),
-Players_access tinyint(1),
+People_access tinyint(1),
 Statistics_access tinyint(1),
 Roles_access tinyint(1)
 );
@@ -51,7 +51,7 @@ foreign key (Loser) references Teams(ID)
 
 -- Players (and coaches) information table
 --	PersonType is an enum that specifies players and coaches
-create table Players(
+create table People(
 ID int(10) unsigned auto_increment primary key,
 TeamID int(10) unsigned not null,
 Name_First varchar(100),
@@ -75,13 +75,13 @@ PlayingTimeSec tinyint(2) unsigned default 0 check (PlayingTimeSec between 0 and
 Points tinyint(3) unsigned default 0,
 Assists tinyint(3) unsigned default 0,
 Rebounds tinyint(3) unsigned default 0,
-foreign key (PlayerID) references Players(ID) on delete cascade,
+foreign key (PlayerID) references People(ID) on delete cascade,
 foreign key (GameID) references Games(ID) on delete cascade
 );
 
 
 -- SENSITIVE INFORMATION:
--- 	Tables: Accounts, Players, Roles
+-- 	Tables: Accounts, People, Roles
 
 -- NON-SENSITIVE INFORMATION:
 -- 	Tables: Games, Teams, Statistics
@@ -133,7 +133,7 @@ identified by 'rook456';
 -- Insert data
 -- 	Roles data
 insert into Roles (	Role, Accounts_access, Teams_access, Games_access, 
-					Players_access, Statistics_access, Roles_access) values
+					People_access, Statistics_access, Roles_access) values
 ('observer',	0, 1, 1, 0, 1, 0),
 ('user',		0, 1, 1, 0, 1, 0),
 ('manager',		1, 1, 1, 1, 1, 1);
@@ -143,8 +143,8 @@ insert into Teams (Team_Name, Team_City, Wins, Losses) values
 ('Falcons', 'Fullerton', 2, 1),
 ('Aligators', 'Anaheim', 1, 2);
 
--- 	Players data
-insert into Players (TeamID, Name_First, Name_Last, Street, City, State, Country, ZipCode, PersonType) values
+-- 	Players and coaches data
+insert into People (TeamID, Name_First, Name_Last, Street, City, State, Country, ZipCode, PersonType) values
 (1,	'Alex', 	'Ackerman', '482 Gold Lane', 		'Fullerton', 	'CA', 'USA', '92834', 'Player'),
 (1, 'Ben', 		'Banner', 	'268 Red Street', 		'Fullerton', 	'CA', 'USA', '92834', 'Player'),
 (1, 'Cam', 		'Christy', 	'620 Magenta Way', 		'Fullerton', 	'CA', 'USA', '92834', 'Player'),
