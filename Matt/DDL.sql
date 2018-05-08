@@ -134,7 +134,7 @@ identified by 'rook456';
 -- 	Permissions to SELECT
 -- 	on Accounts, Roles
 drop user if exists '431login';
-grant select
+grant select, insert
 on ProjectBasketball431.Accounts
 to '431login'
 identified by 'bishop567';
@@ -182,5 +182,4 @@ insert into Games (Game_Date, Winner, Loser) values
 insert into Statistics (PlayerID, GameID, PlayingTimeMin, PlayingTimeSec, Points, Assists, Rebounds) values
 (1,	1, 20, 33, 14, 4, 6),
 (2,	1, 14, 21, 12, 2, 4);
-
 
