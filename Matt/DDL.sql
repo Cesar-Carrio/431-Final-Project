@@ -123,7 +123,11 @@ identified by 'knight890';
 grant insert, select, update, delete
 on ProjectBasketball431.Teams
 to '431user'
+identified by 'knight890';grant insert, select, update, delete
+on ProjectBasketball431.People
+to '431user'
 identified by 'knight890';
+
 
 -- Executive manager ('Manager' for short in enum) role
 -- 	Permissions to INSERT, SELECT, UPDATE, DELETE
@@ -150,7 +154,7 @@ identified by 'bishop567';
 
 -- Insert data
 -- 	Roles data
-insert into Roles (	Role, Accounts_access, Teams_access, Games_access, 
+insert into Roles (	Role, Accounts_access, Teams_access, Games_access,
 					People_access, Statistics_access, Roles_access, Account_name) values
 ('observer',	0, 1, 1, 0, 1, 0, '431obs'),
 ('user',		0, 1, 1, 0, 1, 0, '431user'),
@@ -186,4 +190,19 @@ insert into Games (Game_Date, Winner, Loser) values
 insert into Statistics (PlayerID, GameID, PlayingTimeMin, PlayingTimeSec, Points, Assists, Rebounds) values
 (1,	1, 20, 33, 14, 4, 6),
 (2,	1, 14, 21, 12, 2, 4);
+
+
+-- manually putting users for develomental enviroment
+-- pasword is 'obs'
+insert into Accounts(Username, Acc_role, Email, PassHash, Name_First, Name_last)
+values ('observer','observer', 'obs@csu.fullerton.edu', '$2y$10$FDvIuExKPs.LAj9Gl8O2suhtxwZHsfC29.PpIEJItfpHc1phLr.zC', 'obs','obs');
+
+-- password is 'user'
+insert into Accounts(Username, Acc_role, Email, PassHash, Name_First, Name_last)
+values ('user','user', 'user@csu.fullerton.edu', '$2y$10$GiDDWk2w3WebRTY5KI3Em.7v7gKHY8.nkeco62lQAXpnO4OMxYDIy', 'user','user');
+
+-- password is 'exec'
+insert into Accounts(Username, Acc_role, Email, PassHash, Name_First, Name_last)
+values ('exec','manager', 'exec@csu.fullerton.edu', '$2y$10$LgSESHQ2.2B7m.SzSh0X2.Pr/NUlRpMz1fU70TraRgnq.Jrw4k0FC', 'exec','exec');
+
 
