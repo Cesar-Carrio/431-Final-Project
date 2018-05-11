@@ -1,4 +1,4 @@
-<form action="../func_files/signup_funcs.php" method="post">
+<form action=<?php echo PUBLIC_PATH.'/func_files/signup_funcs.php'; ?> method="post">
     <br>
     First Name: <br>
     <input type="text" name="Name_first" required>

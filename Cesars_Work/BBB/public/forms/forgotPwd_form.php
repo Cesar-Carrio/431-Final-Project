@@ -1,4 +1,4 @@
-<form action="../func_files/forgotPwd_funcs.php" method="post">
+<form action= PUBLIC_PATH."/func_files/forgotPwd_funcs.php" method="post">
     <br>
     Email: <br>
     <input type="email" name="Email" required>

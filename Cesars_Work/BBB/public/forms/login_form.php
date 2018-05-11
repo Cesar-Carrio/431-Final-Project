@@ -1,6 +1,6 @@
 
 <h1>LOGIN!</h1>
-<form action="../func_files/login_funcs.php" method="post">
+<form action=<?php echo PUBLIC_PATH.'/func_files/login_funcs.php'; ?> method="post">
     Username: <br>
     <input type="text" name="Username">
     <br>

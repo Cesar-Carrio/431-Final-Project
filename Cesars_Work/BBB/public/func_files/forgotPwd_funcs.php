@@ -14,3 +14,4 @@ if(mail($to, $subject, $message, $headers)){
 else{
     header("Location: ../index.php?forgotPwd=failed");
 }
+//could not complete functionality completely.

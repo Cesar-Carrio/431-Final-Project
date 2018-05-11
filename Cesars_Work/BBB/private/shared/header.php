@@ -18,7 +18,9 @@
     <div>
         <?php
          if (isset($_SESSION['Username'])){
-            echo '<form action="../../forms/logout.php" method="post" style="text-align: right;">
+            echo '<form action=';
+            echo PUBLIC_PATH."/forms/logout.php";
+            echo ' method="post" style="text-align: right;">
             <button type="submit" name="submit">Logout</button>
             </form>';
 
@@ -81,7 +83,9 @@
 
             } else {
             echo '<h1>LOGIN!</h1>
-                <form action="../func_files/login_funcs.php" method="post">
+                <form action=';
+            echo PUBLIC_PATH."/func_files/login_funcs.php";
+            echo ' method="post">
                     Username: <br>
                     <input type="text" name="Username">
                     <br>
