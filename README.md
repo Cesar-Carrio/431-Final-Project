@@ -1,4 +1,4 @@
-# 431-Final-Project
+# Basketball WebApp
 Final project for 431
 
 **Database design:**
